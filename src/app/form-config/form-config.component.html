@@ -1,0 +1,54 @@
+<section class="config-container">
+    <h2>Form Configuration</h2>
+    <form [formGroup]="formConfig">
+        <div formArrayName="fields">
+            <div class="field-group" *ngFor="let field of fields.controls; let i = index" [formGroupName]="i">
+                <div class="field">
+                    <label>Label:</label>
+                    <input formControlName="label" type="text" required />
+                    <div *ngIf="field.get('label')?.invalid && field.get('label')?.touched" class="error-message">
+                      Label is required.
+                    </div>
+                </div>
+            
+                <div class="field">
+                    <label>Type:</label>
+                    <select formControlName="type">
+                        <option value="text">Text</option>
+                        <option value="number">Number</option>
+                        <option value="email">Email</option>
+                        <option value="dropdown">Dropdown</option>
+                    </select>
+                </div>
+            
+                <div class="field">
+                    <label>Required:</label>
+                    <div class="toggle-switch">
+                        <input type="checkbox" formControlName="required" id="required-toggle-{{i}}" />
+                        <label for="required-toggle-{{i}}" class="switch"></label>
+                    </div>
+                </div>                
+            
+                <section *ngIf="field.get('type')?.value === 'dropdown'">
+                    <label>Options:</label>
+                    <div formArrayName="options">
+                        <ng-container *ngFor="let option of getOptions(field); let j = index">
+                            <div class="field option-field">
+                                <input [formControlName]="j" type="text">
+                                <button type="button" class="remove" (click)="removeOption(i, j)">Remove</button>
+                            </div>
+                        </ng-container>
+                        <button type="button" class="add" (click)="addOption(i)">Add Option</button>
+                    </div>
+                </section>
+            
+                <button type="button" class="remove" (click)="removeField(i)">Remove Field</button>
+            </div>
+        </div>
+        <div class="button-group">
+            <button type="button" class="add" (click)="addField()">Add Field</button>
+            <button type="button" (click)="submitConfig()">Submit Configuration</button>
+            <button type="button" (click)="resetFormConfig()">Reset Form</button>
+        </div>
+    </form>
+</section>

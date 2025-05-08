@@ -1,0 +1,173 @@
+.config-container {
+    max-width: 650px;
+    margin: auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s;
+}
+
+.config-container:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.field {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Vertical margin for each form group */
+.field-group {
+    margin-bottom: 25px;
+    /* Added margin between form groups */
+    padding: 15px;
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.field label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+input[type="text"],
+select,
+input[type="checkbox"] {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.1);
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+section.options {
+    padding: 15px;
+    margin-bottom: 20px;
+    background: #f1f1f1;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+section.options label {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+}
+
+section.options .option-field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+button.remove {
+    background-color: #dc3545;
+}
+
+button.remove:hover {
+    background-color: #c82333;
+}
+
+button.add {
+    background-color: #28a745;
+}
+
+button.add:hover {
+    background-color: #218838;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 4px;
+}
+
+/* Toggle Switch Styles */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-switch .switch {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.toggle-switch .switch:before {
+    content: "";
+    position: absolute;
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    left: 4px;
+    bottom: 2px;
+    top: 1.5px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+.toggle-switch input:checked + .switch {
+    background-color: #4CAF50;
+}
+
+.toggle-switch input:checked + .switch:before {
+    transform: translateX(26px);
+}

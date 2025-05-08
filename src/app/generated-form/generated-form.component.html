@@ -1,0 +1,39 @@
+<section class="form-container">
+    <h2>Generated Form</h2>
+    <form [formGroup]="generatedForm" (ngSubmit)="submitForm()">
+        <ng-container *ngFor="let field of formFields">
+            <div class="form-group">
+                <label>{{ field.label }}</label>
+
+                <!-- Text, Number, Email fields -->
+                <input *ngIf="field.type !== 'dropdown'" [type]="field.type" [formControlName]="field.label"
+                    [placeholder]="field.label" class="form-control" />
+
+                <!-- Dropdown field -->
+                <select *ngIf="field.type === 'dropdown'" [formControlName]="field.label" class="form-control">
+                    <option *ngFor="let option of field.options" [value]="option">
+                        {{ option }}
+                    </option>
+                </select>
+
+                <div *ngIf="isControlInvalid(field.label)" class="error-message">
+                    <div *ngIf="generatedForm.get(field.label)?.errors?.['required']">This field is required.</div>
+                    <div *ngIf="generatedForm.get(field.label)?.errors?.['email']">Please enter a valid email address.
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+        <!-- Submit, Clear Form, and Configure Buttons -->
+        <div class="button-group">
+            <button type="submit" class="btn btn-success mt-3">Submit</button>
+            <button type="button" class="btn btn-danger mt-3 ml-2" (click)="clearForm()">Clear Form</button>
+            <button type="button" class="btn btn-primary mt-3 ml-2" (click)="redirectToConfig()">Configure Form</button>
+        </div>
+    </form>
+
+    <div *ngIf="submittedData" class="submitted-data">
+        <h3>Submitted Data:</h3>
+        <pre>{{ submittedData | json }}</pre>
+    </div>
+</section>

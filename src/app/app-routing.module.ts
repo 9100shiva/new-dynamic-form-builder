@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FormConfigComponent } from './form-config/form-config.component';
+import { GeneratedFormComponent } from './generated-form/generated-form.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'form-config', component: FormConfigComponent },
+  { path: 'generated-form', component: GeneratedFormComponent },
+  { path: '', redirectTo: '/form-config', pathMatch: 'full' }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
